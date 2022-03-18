@@ -63,7 +63,7 @@ export default function Container(props: { [x: string]: any; children: any }) {
         className="flex flex-col justify-center px-8 bg-gray-50 dark:bg-gray-900"
       >
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </div>
   );
