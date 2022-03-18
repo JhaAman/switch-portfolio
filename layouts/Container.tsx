@@ -27,25 +27,21 @@ function NavItem({ href, text }: { href: string; text: string }) {
   );
 }
 
-export default function Container({
-  children,
-  ...customMeta
-}: {
-  children: React.ReactNode;
-  customMeta?: CustomMetaType;
-}) {
+export default function Container(props: { [x: string]: any; children: any }) {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
+  const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
     title: "Aman Jha | Founder. Designer. Everlasting.",
     description: `Making tangie.ai, a platform for tangies.`,
     image: "https://amanjha.dev/static/images/banner.png",
     type: "website",
+    date: undefined,
     ...customMeta,
   };
 
@@ -70,9 +66,9 @@ export default function Container({
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
-        {/* {meta.date && (
+        {meta.date && (
           <meta property="article:published_time" content={meta.date} />
-        )} */}
+        )}
       </Head>
       <div className="flex flex-col justify-center px-8">
         <nav className="flex items-center justify-between w-full relative max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16  text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
