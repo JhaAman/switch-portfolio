@@ -23,7 +23,8 @@ module.exports = {
           900: "#111111",
         },
         fontFamily: {
-          sans: ["IBM Plex Sans", ...fontFamily.sans],
+          // sans: ["IBM Plex Sans", ...fontFamily.sans],
+          sans: ['"Apercu Pro"', ...fontFamily.sans],
         },
       },
     },

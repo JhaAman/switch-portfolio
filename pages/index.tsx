@@ -4,7 +4,9 @@ import Container from "_/layouts/Container";
 const Home: NextPage = () => {
   return (
     <Container>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <div className="flex justify-center items-center text-black dark:text-white">
+        <h1 className="uppercase">Aman</h1>
+      </div>
     </Container>
   );
 };
