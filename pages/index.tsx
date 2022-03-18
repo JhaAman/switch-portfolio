@@ -7,8 +7,8 @@ import styles from "../styles/Home.module.css";
 const Home: NextPage = () => {
   return (
     <Container
-      title="Blog – Lee Robinson"
-      description="Thoughts on the software industry, programming, tech, videography, music, and my personal life."
+    // title=""
+    // description=""
     >
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
     </Container>
