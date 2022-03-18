@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import NextLink from "next/link";
 import cn from "classnames";
 import Footer from "_/components/Footer";
+import { CustomMetaType } from "_/types";
 
 function NavItem({ href, text }: { href: string; text: string }) {
   const router = useRouter();
@@ -31,7 +32,7 @@ export default function Container({
   ...customMeta
 }: {
   children: React.ReactNode;
-  customMeta?: any;
+  customMeta?: CustomMetaType;
 }) {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
