@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.skip-nav {
-  @apply absolute px-4 py-3 transition-transform duration-200 transform -translate-y-12 -left-1/4 focus:top-4 focus:translate-y-3 -top-8;
-}
-
 @font-face {
   font-family: "Apercu Pro";
   src: url("/fonts/ApercuPro/ApercuPro-Medium.eot");
@@ -187,4 +183,8 @@
     url("/fonts/ApercuPro/ApercuPro-BlackItalic.ttf") format("truetype");
   font-weight: 900;
   font-style: italic;
+}
+
+.skip-nav {
+  @apply absolute px-4 py-3 transition-transform duration-200 transform -translate-y-12 -left-1/4 focus:top-4 focus:translate-y-3 -top-8;
 }

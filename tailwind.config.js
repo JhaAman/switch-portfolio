@@ -1,4 +1,5 @@
-const { spacing, fontFamily } = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: [
@@ -8,6 +9,10 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Apercu Pro"', ...defaultTheme.fontFamily.sans],
+        mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
+      },
       colors: {
         "blue-opaque": "rgb(13 42 148 / 18%)",
         gray: {
@@ -21,11 +26,6 @@ module.exports = {
           700: "#333333",
           800: "#222222",
           900: "#111111",
-        },
-        fontFamily: {
-          // sans: ["IBM Plex Sans", ...fontFamily.sans],
-
-          apercu: ['"Apercu Pro"'],
         },
       },
     },

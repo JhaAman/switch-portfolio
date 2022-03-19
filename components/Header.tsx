@@ -28,7 +28,7 @@ function NavItem({ href, text }: { href: string; text: string }) {
 
 export default function Header({}: {}) {
   return (
-    <nav className="relative flex items-center justify-between w-full pt-20 pb-8 mx-40 text-gray-900 border-gray-200 max-w-screen-2xl dark:border-gray-700 sm:pb-16 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+    <nav className="relative flex items-start justify-between w-full px-40 pt-20 pb-8 text-gray-900 border-gray-200 dark:border-gray-700 sm:pb-16 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
       <a href="#skip" className="skip-nav">
         Skip to content
       </a>
@@ -38,7 +38,7 @@ export default function Header({}: {}) {
           alt="Aman Jha"
           height={50}
           width={50}
-          src="/avatar.jpg"
+          src="/static/images/profile.jpg"
           className="rounded-full"
         />
       </div>
@@ -48,13 +48,13 @@ export default function Header({}: {}) {
         {/* <NavItem href="/guestbook" text="Guestbook" /> */}
 
         <div className="flex flex-col items-center justify-center text-black dark:text-white">
-          <h1 className="pb-2 font-sans text-4xl font-aperc">Aman</h1>
-          <h2 className="">Founder. Designer. Everlasting.</h2>
+          <h1 className="text-4xl ">Aman</h1>
+          <h2 className="lowercase">Founder. Designer. Everlasting.</h2>
         </div>
       </div>
 
       <div>
-        <h1></h1>
+        <h1>San Francisco</h1>
       </div>
     </nav>
   );
