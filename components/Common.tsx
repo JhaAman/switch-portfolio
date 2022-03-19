@@ -7,12 +7,7 @@ export const ExternalLink = ({
   href: string;
   children: ReactNode;
 }) => (
-  <a
-    className="text-gray-500 transition hover:text-gray-600"
-    target="_blank"
-    rel="noopener noreferrer"
-    href={href}
-  >
+  <a target="_blank" rel="noopener noreferrer" href={href}>
     {children}
   </a>
 );
