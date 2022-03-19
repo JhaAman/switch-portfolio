@@ -24,7 +24,8 @@ module.exports = {
         },
         fontFamily: {
           // sans: ["IBM Plex Sans", ...fontFamily.sans],
-          sans: ['"Apercu Pro"', ...fontFamily.sans],
+
+          apercu: ['"Apercu Pro"'],
         },
       },
     },
