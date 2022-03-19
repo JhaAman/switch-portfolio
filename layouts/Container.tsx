@@ -1,9 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-
-import Footer from "_/components/Footer";
 import { NextSeo } from "next-seo";
-import Header from "_/components/Header";
 
 export default function Container(props: { [x: string]: any; children: any }) {
   const { children, ...customMeta } = props;
@@ -55,15 +52,12 @@ export default function Container(props: { [x: string]: any; children: any }) {
           site_name: "Aman Jha",
         }}
       />
-      <div className="flex flex-col justify-center px-8">
-        <Header />
-      </div>
+      <div className="flex flex-col justify-center px-8"></div>
       <main
         id="skip"
         className="flex flex-col justify-center px-8 bg-gray-50 dark:bg-gray-900"
       >
         {children}
-        {/* <Footer /> */}
       </main>
     </div>
   );

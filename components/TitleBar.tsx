@@ -33,7 +33,7 @@ export default function Header({}: {}) {
         Skip to content
       </a>
 
-      <div className="flex items-center">
+      <div className="flex items-center w-14">
         <Image
           alt="Aman Jha"
           height={50}
@@ -53,8 +53,8 @@ export default function Header({}: {}) {
         </div>
       </div>
 
-      <div>
-        <h1>San Francisco</h1>
+      <div className="flex w-20">
+        <h1 className="mx-2 whitespace-nowrap">San Francisco</h1>
       </div>
     </nav>
   );
