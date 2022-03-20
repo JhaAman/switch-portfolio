@@ -3,12 +3,12 @@ import Image from "next/image";
 
 export default function TitleBar({}: {}) {
   return (
-    <nav className="relative flex items-start justify-between w-full px-40 pt-20 pb-8 text-gray-900 border-gray-200 dark:border-gray-700 sm:pb-16 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+    <nav className="relative flex flex-col items-center justify-between w-full px-40 pt-20 pb-8 text-gray-900 border-gray-200 sm:items-start sm:flex-row dark:border-gray-700 sm:pb-16 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
       <a href="#skip" className="skip-nav">
         Skip to content
       </a>
 
-      <div className="flex items-center w-14">
+      <div className="flex items-center pb-4 sm:pb-0 w-14">
         <Image
           alt="Aman Jha"
           height={50}
@@ -28,7 +28,7 @@ export default function TitleBar({}: {}) {
         </div>
       </div>
 
-      <div className="flex w-20">
+      <div className="hidden w-20 md:flex">
         <h1 className="mx-2 whitespace-nowrap">San Francisco</h1>
       </div>
     </nav>

@@ -1,109 +1,121 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import cn from "classnames";
 
-import { HomeIcon } from "@heroicons/react/outline";
+import {
+  HomeIcon,
+  SunIcon,
+  MoonIcon,
+  NewspaperIcon,
+  InboxInIcon,
+  VolumeUpIcon,
+} from "@heroicons/react/outline";
 import Icon from "@mdi/react";
-import { mdiTwitter } from "@mdi/js";
 import { ExternalLink } from "./Common";
+import { mdiTwitter, mdiFruitWatermelon, mdiGithub } from "@mdi/js";
+import { useTheme } from "next-themes";
 
-const NavObjs = [
-  {
-    href: "/tangie",
-    text: "Tangie",
-    icon: <HomeIcon />,
-  },
-  {
-    href: "/",
-    text: "Home",
-    icon: <HomeIcon />,
-  },
-  {
-    href: "/everlasting",
-    text: "Everlasting Day",
-    icon: <HomeIcon />,
-  },
-  {
-    href: "/blog",
-    text: "Blog",
-    icon: <HomeIcon />,
-  },
-  {
-    href: "https://twitter.com/amanjha__",
-    text: "Twitter",
-    icon: <Icon path={mdiTwitter} />,
-  },
-  {
-    href: "/",
-    text: "Home",
-    icon: <HomeIcon />,
-  },
-  {
-    href: "/",
-    text: "Home",
-    icon: <HomeIcon />,
-  },
-  {
-    href: "/",
-    text: "Home",
-    icon: <HomeIcon />,
-  },
-];
+type NavObj = {
+  href: string;
+  text: string;
+  icon: ReactNode;
+  action?: () => void;
+};
 
 type Props = {};
 
 export default function NavBar({}: Props) {
-  const [items, setItems] = React.useState(NavObjs);
+  const { resolvedTheme, setTheme } = useTheme();
+
+  const [mounted, setMounted] = useState(false);
+  // After mounting, we have access to the theme
+  useEffect(() => setMounted(true), []);
+
+  const [items] = React.useState([
+    {
+      href: "/",
+      text: "Home",
+      icon: <HomeIcon />,
+    },
+    {
+      href: "https://twitter.com/amanjha__",
+      text: "Twitter",
+      icon: <Icon path={mdiTwitter} />,
+    },
+    {
+      href: "https://github.com/JhaAman",
+      text: "Github",
+      icon: <Icon path={mdiGithub} />,
+    },
+    {
+      href: "mailto:hey@amanjha.dev",
+      text: "Email",
+      icon: <InboxInIcon />,
+    },
+    {
+      href: "",
+      text: "Dark Mode",
+      icon: <MoonIcon />,
+      action: () => {
+        setTheme(resolvedTheme === "dark" ? "light" : "dark");
+        console.log("changed theme");
+      },
+    },
+    {
+      href: "",
+      text: "Volume",
+      icon: <VolumeUpIcon />,
+    },
+  ]);
 
   return (
     <div className="flex items-center justify-center gap-4">
-      {/* <NavItem href="/" text="text" /> */}
-      {NavObjs.map((obj) => (
-        <NavItem key={obj.href} {...obj} />
+      {items.map((obj, idx) => (
+        <NavItem key={idx} {...obj} />
       ))}
     </div>
   );
 }
 
-const NavItem = ({
-  href,
-  text,
-  icon,
-}: {
-  href: string;
-  text: string;
-  icon: ReactNode;
-}) => {
+const NavItem = ({ href, text, icon, action }: NavObj) => {
   const router = useRouter();
 
   // Should we use Link or ExternalLink?
   const startsWith = (string: string, prefix: string) =>
     string.indexOf(prefix) === 0;
 
-  const hasHttp = (str: string) =>
-    startsWith(str, "https://") || startsWith(str, "http://");
+  const type = () => {
+    if (startsWith(href, "http") || startsWith(href, "mailto:")) {
+      return "external";
+    }
+    if (action) {
+      return "action";
+    }
+    return "route";
+  };
 
-  const isActive = !hasHttp(href) && router.asPath === href;
+  const isActive = router.asPath === href;
 
   return (
     <button
       className={cn(
         isActive
-          ? "selected font-semibold text-gray-800 dark:text-gray-200"
+          ? " font-semibold text-gray-800 dark:text-gray-200"
           : "font-normal text-gray-600 dark:text-gray-400",
-        " w-14 h-14 p-2 bg-gray-500 rounded-full"
+        " w-14 h-14 p-3 bg-gray-500 rounded-full"
       )}
+      onClick={action ? action : () => {}}
     >
-      {/* // className="w-12 h-12 p-2 bg-gray-500 rounded-full"> */}
-      {hasHttp(href) && <ExternalLink href={href}>{icon}</ExternalLink>}
-      {!hasHttp(href) && (
+      {type() === "route" && (
         <Link href={href} passHref>
           {icon}
         </Link>
       )}
+      {type() === "external" && <ExternalLink href={href}>{icon}</ExternalLink>}
+      {type() === "action" && icon}
     </button>
   );
 };
