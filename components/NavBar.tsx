@@ -103,8 +103,8 @@ const NavItem = ({ href, text, icon, action }: NavObj) => {
     <button
       className={cn(
         isActive
-          ? " font-semibold text-gray-800 dark:text-gray-200"
-          : "font-normal text-gray-600 dark:text-gray-400",
+          ? " text-gray-800 dark:text-gray-200"
+          : " text-gray-700 dark:text-gray-300",
         " w-14 h-14 p-3 bg-gray-500 rounded-full"
       )}
       onClick={action ? action : () => {}}
